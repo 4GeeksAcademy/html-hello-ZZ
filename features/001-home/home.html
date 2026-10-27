@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAISON NOIRE | Streetwear de lujo francés</title>
+    <meta name="description" content="Descubre MAISON NOIRE: streetwear de lujo francés, prendas contemporáneas, calzado y accesorios. Explora las novedades y los más vendidos.">
+    <meta name="theme-color" content="#5F5449">
+    <meta property="og:title" content="MAISON NOIRE | Streetwear de lujo francés">
+    <meta property="og:description" content="Elegancia silenciosa y actitud contemporánea. Descubre las prendas, el calzado y los accesorios de MAISON NOIRE.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:site_name" content="MAISON NOIRE">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&amp;fit=crop&amp;w=1600&amp;q=85">
+    <meta property="og:image:alt" content="Campaña de moda de MAISON NOIRE">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+      :root {
+        color-scheme: light;
+        background: #EBFCFB;
+        color: #5F5449;
+        font-family: "Inter", sans-serif;
+      }
+
+      body { margin: 0; }
+      h1, h2, h3, .brand { font-family: "Playfair Display", Georgia, serif; }
+      :focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+      summary { cursor: pointer; }
+      summary::marker { color: #CEDFD9; }
+      ::selection { background: #CEDFD9; color: #5F5449; }
+
+      .hero {
+        position: relative;
+        isolation: isolate;
+        min-height: 580px;
+        display: flex;
+        align-items: center;
+        background: #5F5449;
+        color: #EBFCFB;
+      }
+
+      .hero-image {
+        position: absolute;
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 40%;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: linear-gradient(90deg, rgb(40 35 30 / 90%), rgb(40 35 30 / 45%));
+      }
+
+      .hero-title { max-width: 700px; font-size: 4rem; line-height: 1.05; }
+      .hero-content { padding-block: 72px; }
+      .campaign-label { font-size: 0.75rem; text-transform: uppercase; }
+      .primary-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        min-height: 48px;
+        padding: 12px 24px;
+        background: #EBFCFB;
+        color: #5F5449;
+        font-size: 0.875rem;
+        font-weight: 600;
+        transition: background-color 200ms;
+      }
+      .primary-link:hover { background: #CEDFD9; }
+
+      .collection { padding-block: 64px; }
+      .collection-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: end;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+      .collection-title { font-size: 2rem; line-height: 1.2; }
+      .text-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 16px;
+        min-height: 44px;
+        text-decoration: underline;
+        text-underline-offset: 6px;
+        font-size: 0.875rem;
+      }
+      .text-link:hover { text-decoration-thickness: 2px; }
+      .product-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px 24px; }
+      .product-grid > li { min-width: 0; }
+      .product-card { height: 100%; }
+      .product-link { display: block; height: 100%; }
+      .product-media { position: relative; aspect-ratio: 3 / 4; background: #CEDFD9; overflow: hidden; }
+      .product-image { width: 100%; height: 100%; object-fit: cover; transition: transform 300ms; }
+      .product-link:hover .product-image { transform: scale(1.035); }
+      .product-link:focus-visible { outline-color: #5F5449; }
+      .product-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        padding: 6px 10px;
+        background: #EBFCFB;
+        color: #5F5449;
+        font-size: 0.75rem;
+      }
+      .product-name { margin-top: 16px; font-size: 1.125rem; font-weight: 600; overflow-wrap: anywhere; }
+      .product-price { margin-top: 8px; color: #5F5449; font-size: 0.875rem; font-weight: 600; }
+      .product-category { margin-top: 4px; font-size: 0.75rem; }
+      .footer-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.875rem; }
+      .footer-link:hover { text-decoration: underline; text-underline-offset: 4px; }
+      .legal-summary { min-height: 44px; align-content: center; font-size: 0.875rem; }
+      .legal-copy { padding-block: 8px 16px; font-size: 0.875rem; line-height: 1.7; }
+      .account-action { width: 100%; min-height: 44px; padding: 8px 12px; text-align: left; font-size: 0.875rem; cursor: not-allowed; }
+
+      @media (min-width: 768px) {
+        .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+
+      @media (min-width: 1024px) {
+        .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      }
+
+      @media (max-width: 767px) {
+        .hero { min-height: 480px; }
+        .hero-content { padding-block: 56px; }
+        .hero-title { font-size: 2.75rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation: none !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body itemscope itemtype="https://schema.org/WebSite" class="min-h-screen bg-[#EBFCFB] text-[#5F5449]">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-[#EBFCFB] focus:px-4 focus:py-3 focus:text-[#5F5449]">
+      Ir al contenido principal
+    </a>
+    <meta itemprop="name" content="MAISON NOIRE">
+    <meta itemprop="description" content="Marca francesa de streetwear de lujo">
+    <meta itemprop="inLanguage" content="es">
+    <link itemprop="url" href="home.html">
+
+    <header class="bg-[#5F5449] text-[#EBFCFB]" itemscope itemtype="https://schema.org/Store">
+      <meta itemprop="name" content="MAISON NOIRE">
+      <meta itemprop="description" content="Marca francesa de prendas, calzado y accesorios de lujo">
+      <nav aria-label="Navegación principal" class="mx-auto grid max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 py-4 sm:px-6 lg:min-h-20 lg:grid-cols-[1fr_minmax(240px,360px)_auto] lg:gap-8 lg:px-8">
+        <a href="home.html" aria-label="MAISON NOIRE, ir al inicio" aria-current="page" itemprop="url" class="brand min-w-0 py-2 text-lg font-semibold italic sm:text-2xl">
+          MAISON NOIRE
+        </a>
+
+        <form action="../../catalogo.html" method="get" role="search" aria-label="Buscar en el catálogo" class="col-span-2 row-start-2 lg:col-span-1 lg:col-start-2 lg:row-start-1">
+          <label for="search-home" class="sr-only">Buscar un producto</label>
+          <fieldset class="flex min-w-0 items-center border border-[#CEDFD9]">
+            <legend class="sr-only">Búsqueda de productos</legend>
+            <input id="search-home" name="q" type="search" placeholder="Buscar un producto…" class="min-h-11 w-full min-w-0 bg-transparent px-3 text-sm text-[#EBFCFB] placeholder:text-[#CEDFD9]">
+            <button type="submit" aria-label="Buscar productos" class="min-h-11 shrink-0 px-4 text-sm font-medium hover:bg-[#EBFCFB] hover:text-[#5F5449]">Buscar</button>
+          </fieldset>
+        </form>
+
+        <details class="relative col-start-2 row-start-1 lg:col-start-3">
+          <summary aria-label="Abrir o cerrar el menú de mi cuenta" class="min-h-11 content-center px-2 text-sm">Cuenta</summary>
+          <nav aria-label="Mi cuenta" class="absolute right-0 top-full z-30 w-48 border border-[#B09398] bg-[#EBFCFB] p-2 text-[#5F5449] shadow-lg">
+            <ul>
+              <li><button type="button" class="account-action" disabled title="No disponible en este prototipo">Mi perfil</button></li>
+              <li><button type="button" class="account-action" disabled title="No disponible en este prototipo">Mis pedidos</button></li>
+              <li><button type="button" class="account-action" disabled title="No disponible en este prototipo">Cerrar sesión</button></li>
+            </ul>
+          </nav>
+        </details>
+      </nav>
+      <nav aria-label="Colecciones y compras" class="border-t border-[#CEDFD9]/30">
+        <ul class="mx-auto flex max-w-7xl flex-wrap items-center gap-x-6 px-4 text-xs sm:px-6 lg:px-8">
+          <li><a href="#novedades" class="inline-flex min-h-11 items-center hover:underline">Novedades</a></li>
+          <li><a href="#mas-vendidos" class="inline-flex min-h-11 items-center hover:underline">Más vendidos</a></li>
+          <li><a href="../../catalogo.html" class="inline-flex min-h-11 items-center hover:underline">Catálogo</a></li>
+          <li class="ml-auto"><a href="../../carrito.html" class="inline-flex min-h-11 items-center hover:underline" aria-label="Ver el carrito">Carrito</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <section class="hero" aria-labelledby="campaign-title">
+        <img class="hero-image" src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&amp;fit=crop&amp;w=1600&amp;q=85" alt="Campaña de moda urbana: prendas y accesorios en una calle comercial" width="1600" height="1067" fetchpriority="high">
+        <section class="hero-content mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Colección otoño-invierno">
+          <p class="campaign-label mb-6">Colección otoño-invierno · París</p>
+          <h1 id="campaign-title" class="hero-title font-semibold">MAISON<br>NOIRE</h1>
+          <p class="mt-6 text-xl font-medium">La elegancia de la sombra.</p>
+          <p class="mt-3 max-w-md text-sm leading-relaxed text-[#EBFCFB]">La nueva colección otoño-invierno, donde el silencio encuentra el estilo.</p>
+          <a href="../../catalogo.html" class="primary-link mt-8" aria-label="Descubrir la colección otoño-invierno">Descubrir la colección <span aria-hidden="true">↗</span></a>
+        </section>
+      </section>
+      <section id="novedades" class="collection mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-labelledby="novedades-title" itemscope itemtype="https://schema.org/ItemList">
+        <meta itemprop="numberOfItems" content="6">
+        <header class="collection-header">
+          <section aria-label="Selección de novedades">
+            <p class="campaign-label mb-3">Lo último de la maison</p>
+            <h2 id="novedades-title" itemprop="name" class="collection-title">Novedades</h2>
+          </section>
+          <a href="../../catalogo.html" class="text-link" aria-label="Ver todas las novedades en el catálogo">Ver colección <span aria-hidden="true">↗</span></a>
+        </header>
+        <ul class="product-grid" aria-label="Lista de novedades">
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="1">
+            <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+              <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Blouson Nocturne, 490 euros">
+                <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Chaqueta de cuero negra, imagen ilustrativa de Blouson Nocturne" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Nuevo</figcaption></figure>
+                <h3 class="product-name" itemprop="name">Blouson Nocturne</h3>
+                <p class="product-category" itemprop="category">Chaquetas</p>
+                <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="490">490 €</data></p>
+              </a>
+            </article>
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="2">
+            <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+              <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Sneakers Minuit, 450 euros">
+                <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Zapatillas urbanas, imagen ilustrativa de Sneakers Minuit" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Nuevo</figcaption></figure>
+                <h3 class="product-name" itemprop="name">Sneakers Minuit</h3>
+                <p class="product-category" itemprop="category">Calzado</p>
+                <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="450">450 €</data></p>
+              </a>
+            </article>
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="3">
+            <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+              <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Veste Ébène, 520 euros">
+                <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Chaqueta contemporánea, imagen ilustrativa de Veste Ébène" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Nuevo</figcaption></figure>
+                <h3 class="product-name" itemprop="name">Veste Ébène</h3>
+                <p class="product-category" itemprop="category">Chaquetas</p>
+                <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="520">520 €</data></p>
+              </a>
+            </article>
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="4">
+            <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+              <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Écharpe Cendré, 180 euros">
+                <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1601924994987-69e26d50dc26?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Tejido de un accesorio de abrigo, imagen ilustrativa de Écharpe Cendré" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Nuevo</figcaption></figure>
+                <h3 class="product-name" itemprop="name">Écharpe Cendré</h3>
+                <p class="product-category" itemprop="category">Accesorios</p>
+                <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="180">180 €</data></p>
+              </a>
+            </article>
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="5">
+            <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+              <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Sac Nocturne, 350 euros">
+                <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Bolso urbano, imagen ilustrativa de Sac Nocturne" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Nuevo</figcaption></figure>
+                <h3 class="product-name" itemprop="name">Sac Nocturne</h3>
+                <p class="product-category" itemprop="category">Accesorios</p>
+                <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="350">350 €</data></p>
+              </a>
+            </article>
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <meta itemprop="position" content="6">
+            <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+              <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Blazer Brume, 620 euros">
+                <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Prenda de sastrería, imagen ilustrativa de Blazer Brume" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Nuevo</figcaption></figure>
+                <h3 class="product-name" itemprop="name">Blazer Brume</h3>
+                <p class="product-category" itemprop="category">Chaquetas</p>
+                <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="620">620 €</data></p>
+              </a>
+            </article>
+          </li>
+        </ul>
+      </section>
+      <section id="mas-vendidos" class="collection border-y border-[#B09398]/40 bg-[#CEDFD9]/40" aria-labelledby="vendidos-title" itemscope itemtype="https://schema.org/ItemList">
+        <meta itemprop="numberOfItems" content="6">
+        <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Selección de más vendidos">
+          <header class="collection-header">
+            <section aria-label="Esenciales de la marca">
+              <p class="campaign-label mb-3">Piezas que permanecen</p>
+              <h2 id="vendidos-title" itemprop="name" class="collection-title">Más vendidos</h2>
+            </section>
+            <a href="../../catalogo.html" class="text-link" aria-label="Ver todos los más vendidos en el catálogo">Ver colección <span aria-hidden="true">↗</span></a>
+          </header>
+          <ul class="product-grid" aria-label="Lista de más vendidos">
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content="1">
+              <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+                <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Chemise Ombre, 280 euros">
+                  <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Camisa de corte clásico, imagen ilustrativa de Chemise Ombre" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Más vendido</figcaption></figure>
+                  <h3 class="product-name" itemprop="name">Chemise Ombre</h3>
+                  <p class="product-category" itemprop="category">Camisas</p>
+                  <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="280">280 €</data></p>
+                </a>
+              </article>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content="2">
+              <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+                <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Pantalon Cendré, 320 euros">
+                  <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Pantalón urbano, imagen ilustrativa de Pantalon Cendré" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Más vendido</figcaption></figure>
+                  <h3 class="product-name" itemprop="name">Pantalon Cendré</h3>
+                  <p class="product-category" itemprop="category">Pantalones</p>
+                  <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="320">320 €</data></p>
+                </a>
+              </article>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content="3">
+              <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+                <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver T-shirt Velours, 180 euros">
+                  <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Camiseta de manga corta, imagen ilustrativa de T-shirt Velours" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Más vendido</figcaption></figure>
+                  <h3 class="product-name" itemprop="name">T-shirt Velours</h3>
+                  <p class="product-category" itemprop="category">Camisetas</p>
+                  <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="180">180 €</data></p>
+                </a>
+              </article>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content="4">
+              <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+                <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Sacoche Sépia, 260 euros">
+                  <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Bolso de cuero, imagen ilustrativa de Sacoche Sépia" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Más vendido</figcaption></figure>
+                  <h3 class="product-name" itemprop="name">Sacoche Sépia</h3>
+                  <p class="product-category" itemprop="category">Accesorios</p>
+                  <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="260">260 €</data></p>
+                </a>
+              </article>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content="5">
+              <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+                <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Manteau Brume, 680 euros">
+                  <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Abrigo de invierno, imagen ilustrativa de Manteau Brume" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Más vendido</figcaption></figure>
+                  <h3 class="product-name" itemprop="name">Manteau Brume</h3>
+                  <p class="product-category" itemprop="category">Abrigos</p>
+                  <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="680">680 €</data></p>
+                </a>
+              </article>
+            </li>
+            <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+              <meta itemprop="position" content="6">
+              <article class="product-card" itemprop="item" itemscope itemtype="https://schema.org/Product">
+                <a class="product-link" itemprop="url" href="../../producto.html" aria-label="Ver Bottes Crépuscule, 490 euros">
+                  <figure class="product-media"><img class="product-image" itemprop="image" src="https://images.unsplash.com/photo-1608256246200-53e635b5b65f?auto=format&amp;fit=crop&amp;w=600&amp;h=800&amp;q=80" alt="Botas de cuero, imagen ilustrativa de Bottes Crépuscule" width="600" height="800" loading="lazy" decoding="async"><figcaption class="product-badge">Más vendido</figcaption></figure>
+                  <h3 class="product-name" itemprop="name">Bottes Crépuscule</h3>
+                  <p class="product-category" itemprop="category">Calzado</p>
+                  <p class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer"><meta itemprop="priceCurrency" content="EUR"><data itemprop="price" value="490">490 €</data></p>
+                </a>
+              </article>
+            </li>
+          </ul>
+        </section>
+      </section>
+    </main>
+    <footer class="bg-[#5F5449] px-4 py-12 text-[#EBFCFB] sm:px-6 lg:px-8 lg:py-16">
+      <p class="brand mx-auto mb-10 max-w-7xl border-b border-[#B09398]/50 pb-8 text-3xl font-semibold italic">MAISON NOIRE</p>
+      <section class="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-3 lg:gap-16" aria-label="Información de MAISON NOIRE">
+        <nav aria-labelledby="footer-categorias">
+          <h2 id="footer-categorias" class="mb-4 text-lg text-[#CEDFD9]">Categorías</h2>
+          <ul>
+            <li><a class="footer-link" href="../../catalogo.html?categoria=calzado" aria-label="Ver la categoría Calzado">Calzado</a></li>
+            <li><a class="footer-link" href="../../catalogo.html?categoria=camisas" aria-label="Ver la categoría Camisas">Camisas</a></li>
+            <li><a class="footer-link" href="../../catalogo.html?categoria=pantalones" aria-label="Ver la categoría Pantalones">Pantalones</a></li>
+            <li><a class="footer-link" href="../../catalogo.html?categoria=accesorios" aria-label="Ver la categoría Accesorios">Accesorios</a></li>
+          </ul>
+        </nav>
+        <section aria-labelledby="footer-legal">
+          <h2 id="footer-legal" class="mb-4 text-lg text-[#CEDFD9]">Legal</h2>
+          <details>
+            <summary class="legal-summary">Términos y condiciones</summary>
+            <p class="legal-copy">MAISON NOIRE es una marca ficticia. Las imágenes y los precios son ilustrativos y no constituyen una oferta de venta.</p>
+          </details>
+          <details>
+            <summary class="legal-summary">Política de privacidad</summary>
+            <p class="legal-copy">Esta página no incluye formularios de registro ni pagos. Las fuentes y fotografías se cargan desde servicios externos, que reciben las solicitudes del navegador conforme a sus políticas de privacidad.</p>
+          </details>
+          <details>
+            <summary class="legal-summary">Sobre MAISON NOIRE</summary>
+            <p class="legal-copy">Una mirada francesa al streetwear contemporáneo. Siluetas esenciales, carácter urbano y una elegancia que no necesita alzar la voz.</p>
+          </details>
+        </section>
+        <section aria-labelledby="footer-contacto">
+          <h2 id="footer-contacto" class="mb-4 text-lg text-[#CEDFD9]">Contacto</h2>
+          <address class="text-sm not-italic leading-7">
+            48 Rue de l'Université<br>
+            75007 París, Francia<br>
+            <a class="footer-link break-all" href="mailto:contact@maisonnoire.fr" aria-label="Escribir a contact@maisonnoire.fr">contact@maisonnoire.fr</a>
+          </address>
+          <p aria-hidden="true" class="mt-4 flex gap-5 text-xs text-[#CEDFD9]"><span>IG</span><span>FB</span><span>X</span></p>
+        </section>
+      </section>
+      <p class="mx-auto mt-10 max-w-7xl border-t border-[#B09398]/50 pt-6 text-xs leading-relaxed">© 2026 MAISON NOIRE. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>
